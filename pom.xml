@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.code2358</groupId>
     <artifactId>jcdk-wrapper</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <prerequisites>
         <maven>3.0</maven>
@@ -15,12 +15,9 @@
         <license.licenseName>apache_v2</license.licenseName>
     </properties>
 
-    <inceptionYear>2017</inceptionYear>
-
-    <organization>
-        <name>code2358</name>
-        <url>http://code2358.github.io</url>
-    </organization>
+    <name>Java Card SDK Wrapper</name>
+    <description>A wrapper for the Java Card SDK</description>
+    <url>https://github.com/code2358/jcdk-wrapper</url>
 
     <licenses>
         <license>
@@ -29,6 +26,30 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <developers>
+        <developer>
+            <name>code2358</name>
+            <email>code2358@outlook.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/code2358/jcdk-wrapper.git</connection>
+        <developerConnection>scm:git:ssh://github.com/code2358/jcdk-wrapper.git</developerConnection>
+        <url>http://github.com/code2358/jcdk-wrapper/tree/master</url>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -89,6 +110,10 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>license-maven-plugin</artifactId>
                 <version>1.12</version>
+                <configuration>
+                    <inceptionYear>2017</inceptionYear>
+                    <organizationName>code2358</organizationName>
+                </configuration>
                 <executions>
                     <execution>
                         <id>first</id>
@@ -104,6 +129,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
