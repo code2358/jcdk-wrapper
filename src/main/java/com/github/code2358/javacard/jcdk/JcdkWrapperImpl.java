@@ -20,8 +20,8 @@ package com.github.code2358.javacard.jcdk;
  * #L%
  */
 
-import com.github.code2358.javacard.jcdk.utils.StringJoiner;
 import com.github.code2358.javacard.jcdk.utils.CommandLine;
+import com.github.code2358.javacard.jcdk.utils.StringJoiner;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -37,7 +37,7 @@ public final class JcdkWrapperImpl implements JcdkWrapper {
 
     private ByteArrayOutputStream jcdkOutput;
 
-    public JcdkWrapperImpl(JcdkInstallation jcdkInstallation, Path configurationFile) throws InitializationException {
+    public JcdkWrapperImpl(JcdkInstallation jcdkInstallation, Path configurationFile) {
         Objects.requireNonNull(jcdkInstallation);
         Objects.requireNonNull(configurationFile);
 

@@ -21,7 +21,11 @@ package com.github.code2358.javacard.jcdk.config;
  */
 
 public final class JcdkConfigurations {
-    public static JcdkConfigurationBuilder newJcdkConfigurationBuilder() {
+
+    private JcdkConfigurations() {
+    }
+
+    public static JcdkConfigurationBuilder newBuilder() {
         return new JcdkConfigurationBuilder();
     }
 }

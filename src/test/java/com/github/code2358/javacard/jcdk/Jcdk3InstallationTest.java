@@ -41,7 +41,7 @@ public class Jcdk3InstallationTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Before
-    public void init() throws InitializationException {
+    public void init() {
         jcdk3Installation = new Jcdk3Installation(JCDK3_PATH);
     }
 

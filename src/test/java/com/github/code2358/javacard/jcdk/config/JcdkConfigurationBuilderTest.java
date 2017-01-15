@@ -20,8 +20,8 @@ package com.github.code2358.javacard.jcdk.config;
  * #L%
  */
 
-import com.github.code2358.javacard.jcdk.Jcdk3Installation;
 import com.github.code2358.javacard.jcdk.ConfigurationException;
+import com.github.code2358.javacard.jcdk.Jcdk3Installation;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -47,7 +47,7 @@ public class JcdkConfigurationBuilderTest {
     @Test
     public void validMinimalConfigSuccess() throws Exception {
         String config = builder.jcdkInstallation(new Jcdk3Installation(Paths.get("/some/jcdk")))
-                .classDirectory(Paths.get("/some/classes"))
+                .classesDirectory(Paths.get("/some/classes"))
                 .outputDirectory(Paths.get("/some/output"))
                 .appletId("01:02:03:04:05:06")
                 .appletClass("some.Class")
@@ -66,9 +66,9 @@ public class JcdkConfigurationBuilderTest {
     @Test
     public void validFullConfigSuccess() throws Exception {
         String config = builder.jcdkInstallation(new Jcdk3Installation(Paths.get("/some/jcdk")))
-                .classDirectory(Paths.get("/some/classes"))
+                .classesDirectory(Paths.get("/some/classes"))
                 .outputDirectory(Paths.get("/some/output"))
-                .supportInt32()
+                .supportInt32(true)
                 .appletId("01:02:03:04:05:06")
                 .appletClass("some.Class")
                 .appletVersion("1.2")
@@ -93,9 +93,9 @@ public class JcdkConfigurationBuilderTest {
     }
 
     @Test
-    public void missingClassDirectoryFailure() throws Exception {
+    public void missingclassesDirectoryFailure() throws Exception {
         exception.expect(ConfigurationException.class);
-        exception.expectMessage("Missing parameter classDirectory");
+        exception.expectMessage("Missing parameter classesDirectory");
 
         builder.jcdkInstallation(new Jcdk3Installation(Paths.get("/some/jcdk"))).build();
     }
@@ -106,7 +106,7 @@ public class JcdkConfigurationBuilderTest {
         exception.expectMessage("Missing parameter outputDirectory");
 
         builder.jcdkInstallation(new Jcdk3Installation(Paths.get("/some/jcdk")))
-                .classDirectory(Paths.get("/some/classes"))
+                .classesDirectory(Paths.get("/some/classes"))
                 .build();
     }
 
@@ -116,7 +116,7 @@ public class JcdkConfigurationBuilderTest {
         exception.expectMessage("Missing parameter appletId");
 
         builder.jcdkInstallation(new Jcdk3Installation(Paths.get("/some/jcdk")))
-                .classDirectory(Paths.get("/some/classes"))
+                .classesDirectory(Paths.get("/some/classes"))
                 .outputDirectory(Paths.get("/some/output"))
                 .build();
     }
@@ -127,7 +127,7 @@ public class JcdkConfigurationBuilderTest {
         exception.expectMessage("Missing parameter appletClass");
 
         builder.jcdkInstallation(new Jcdk3Installation(Paths.get("/some/jcdk")))
-                .classDirectory(Paths.get("/some/classes"))
+                .classesDirectory(Paths.get("/some/classes"))
                 .outputDirectory(Paths.get("/some/output"))
                 .appletId("01:02:03:04:05:06")
                 .build();
@@ -139,7 +139,7 @@ public class JcdkConfigurationBuilderTest {
         exception.expectMessage("Missing parameter appletVersion");
 
         builder.jcdkInstallation(new Jcdk3Installation(Paths.get("/some/jcdk")))
-                .classDirectory(Paths.get("/some/classes"))
+                .classesDirectory(Paths.get("/some/classes"))
                 .outputDirectory(Paths.get("/some/output"))
                 .appletId("01:02:03:04:05:06")
                 .appletClass("some.Class")

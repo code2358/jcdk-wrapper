@@ -32,7 +32,7 @@ public final class Jcdk2Installation implements JcdkInstallation {
 
     private final Path jcdk2Home;
 
-    public Jcdk2Installation(Path jcdkPath) throws InitializationException {
+    public Jcdk2Installation(Path jcdkPath) {
         Objects.requireNonNull(jcdkPath);
         jcdk2Home = jcdkPath;
     }

@@ -41,7 +41,7 @@ public class Jcdk2InstallationTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Before
-    public void init() throws InitializationException {
+    public void init() {
         Jcdk2Installation = new Jcdk2Installation(JCDK2_PATH);
     }
 

@@ -20,9 +20,9 @@ package com.github.code2358.javacard.jcdk.config;
  * #L%
  */
 
-import com.github.code2358.javacard.jcdk.utils.StringJoiner;
 import com.github.code2358.javacard.jcdk.ConfigurationException;
 import com.github.code2358.javacard.jcdk.JcdkInstallation;
+import com.github.code2358.javacard.jcdk.utils.StringJoiner;
 
 import java.nio.file.Path;
 import java.util.Objects;
@@ -30,7 +30,7 @@ import java.util.Objects;
 public final class JcdkConfigurationBuilder {
 
     private JcdkInstallation jcdkInstallation;
-    private Path classDirectory;
+    private Path classesDirectory;
     private Path outputDirectory;
 
     private AppletId appletId;
@@ -44,8 +44,8 @@ public final class JcdkConfigurationBuilder {
         return this;
     }
 
-    public JcdkConfigurationBuilder classDirectory(Path classDirectory) {
-        this.classDirectory = Objects.requireNonNull(classDirectory);
+    public JcdkConfigurationBuilder classesDirectory(Path classesDirectory) {
+        this.classesDirectory = Objects.requireNonNull(classesDirectory);
         return this;
     }
 
@@ -72,8 +72,8 @@ public final class JcdkConfigurationBuilder {
         return this;
     }
 
-    public JcdkConfigurationBuilder supportInt32() {
-        this.supportInt32 = true;
+    public JcdkConfigurationBuilder supportInt32(boolean supportInt32) {
+        this.supportInt32 = supportInt32;
         return this;
     }
 
@@ -82,7 +82,7 @@ public final class JcdkConfigurationBuilder {
 
         StringJoiner commandString = new StringJoiner(" ");
         commandString.add("-classdir");
-        commandString.add(classDirectory.toString());
+        commandString.add(classesDirectory.toString());
         if (supportInt32) {
             commandString.add("-i");
         }
@@ -114,8 +114,8 @@ public final class JcdkConfigurationBuilder {
             throw new ConfigurationException("Missing parameter jcdkInstallation");
         }
 
-        if (classDirectory == null) {
-            throw new ConfigurationException("Missing parameter classDirectory");
+        if (classesDirectory == null) {
+            throw new ConfigurationException("Missing parameter classesDirectory");
         }
 
         if (outputDirectory == null) {

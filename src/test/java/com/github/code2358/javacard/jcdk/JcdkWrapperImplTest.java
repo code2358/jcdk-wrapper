@@ -56,7 +56,7 @@ public class JcdkWrapperImplTest {
     public ExpectedException exception = ExpectedException.none();
 
     @Before
-    public void init() throws InitializationException, IOException {
+    public void init() throws IOException {
         configurationFile = Files.createTempFile("", "");
 
         // for jcdk version specific tests

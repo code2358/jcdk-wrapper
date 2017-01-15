@@ -31,7 +31,7 @@ public final class Jcdk3Installation implements JcdkInstallation {
 
     private final Path jcdk3Home;
 
-    public Jcdk3Installation(Path jcdkPath) throws InitializationException {
+    public Jcdk3Installation(Path jcdkPath) {
         Objects.requireNonNull(jcdkPath);
         jcdk3Home = jcdkPath;
     }
