@@ -28,6 +28,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -77,6 +78,27 @@ public class JcdkConfigurationBuilderTest {
         assertThat(config, equalTo("-classdir /some/classes "
                 + "-i "
                 + "-exportpath /some/jcdk/api_export_files "
+                + "-applet 0x01:0x02:0x03:0x04:0x05:0x06 some.Class "
+                + "-d /some/output "
+                + "-out CAP EXP JCA "
+                + "-v "
+                + "some 0x01:0x02:0x03:0x04:0x05 1.2"));
+    }
+
+    @Test
+    public void validConfigWithMultiplePathsSuccess() throws Exception {
+        String config = builder.jcdkInstallation(new Jcdk3Installation(Paths.get("/some/jcdk")))
+                .classesDirectory(Paths.get("/some/classes"))
+                .outputDirectory(Paths.get("/some/output"))
+                .appletId("01:02:03:04:05:06")
+                .appletClass("some.Class")
+                .appletVersion("1.2")
+                .exportPath(Paths.get("/individual/export"))
+                .exportPath(Arrays.asList(Paths.get("/individual/export1"), Paths.get("/individual/export2")))
+                .build();
+
+        assertThat(config, equalTo("-classdir /some/classes "
+                + "-exportpath /some/jcdk/api_export_files:/individual/export:/individual/export1:/individual/export2 "
                 + "-applet 0x01:0x02:0x03:0x04:0x05:0x06 some.Class "
                 + "-d /some/output "
                 + "-out CAP EXP JCA "
